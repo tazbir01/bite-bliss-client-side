@@ -1,12 +1,39 @@
+import { useContext, useState } from "react";
+import { authContext } from "../Provider/AuthProvider";
+
+
 
 const Register = () => {
+    const {creatUser} = useContext(authContext)
+    const [passwordErrorMessage, setPasswordErrorMessage] = useState('')
+
     const handleRegisterForm = e =>{
         e.preventDefault()
         const name = e.target.name.value
+        const photo = e.target.name.value
         const email = e.target.email.value
         const password = e.target.password.value
-        console.log(name , email, password)
+        console.log(name , email, password, photo)
+
+        setPasswordErrorMessage('')
+
+        if(password.length < 6){
+            return setPasswordErrorMessage('Please give more than 6 character password.')
+        }else if(! /[A-Z]/.test(password)){
+            return setPasswordErrorMessage('Please add any capital letter.')
+        }else if(! /[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]/.test(password)){
+            return setPasswordErrorMessage('Please add any speacial character.')
+        }
+
+        creatUser(email, password)
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(error =>{
+            console.log(error.message)
+        })
     }
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col">
@@ -19,7 +46,13 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text" name="name" placeholder="email" className="input input-bordered" required />
+                            <input type="text" name="name" placeholder="Name" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Photo url</span>
+                            </label>
+                            <input type="text" name="photo" placeholder="Photo url..." className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -35,6 +68,9 @@ const Register = () => {
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
+                            {
+                                passwordErrorMessage && <p className="text-red-600">*{passwordErrorMessage}</p>
+                            }
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Register</button>

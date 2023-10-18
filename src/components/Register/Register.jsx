@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
 import { authContext } from "../Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
+import {Link, useNavigate} from 'react-router-dom';
 
 
 
 const Register = () => {
-    const {creatUser} = useContext(authContext)
+    const {creatUser, loginWithGoogle} = useContext(authContext)
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('')
+    const navigate = useNavigate()
 
     const handleRegisterForm = e =>{
         e.preventDefault()
@@ -38,6 +40,19 @@ const Register = () => {
         .catch(error =>{
             console.log(error.message)
             setPasswordErrorMessage(error.message)
+        })
+    }
+
+    const handleGoogleLogin = e =>{
+        e.preventDefault()
+
+        loginWithGoogle()
+        .then(result => {
+            console.log(result.user)
+            navigate(location?.state ? location.state : "/")
+        })
+        .catch(error => {
+            console.log(error.message)
         })
     }
 
@@ -80,6 +95,10 @@ const Register = () => {
                             <button className="btn btn-primary">Register</button>
                         </div>
                     </form>
+                    <p className="font-medium text-center">Have An Acount? <Link className="font-bold" to="/login">Login</Link></p>
+                    <div>
+                    <button onClick={handleGoogleLogin}>Login With Google</button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import { authContext } from "../Provider/AuthProvider";
-import { useLocation, useNavigate  } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
-    const {loginUser} = useContext(authContext)
+    const {loginUser, loginWithGoogle} = useContext(authContext)
     const [errorMessage, setErrorMessage] = useState('')
     const location = useLocation()
     console.log(location)
@@ -23,6 +23,19 @@ const Login = () => {
         .catch(error =>{
             console.log(error.message)
             setErrorMessage(error.message)
+        })
+    }
+
+    const handleGoogleLogin = e =>{
+        e.preventDefault()
+
+        loginWithGoogle()
+        .then(result =>{
+            console.log(result)
+            navigate(location?.state ? location.state : "/")
+        })
+        .catch(error => {
+            console.log(error.message)
         })
     }
 
@@ -57,6 +70,10 @@ const Login = () => {
                             <button className="btn btn-primary">Login</button>
                         </div>
                     </form>
+                    <p className="font-medium text-center">Don&#39;t Have An Acount? <Link className="font-bold" to="/register">Register Now!</Link></p>
+                    <div>
+                        <button onClick={handleGoogleLogin}>Login With Google</button>
+                    </div>
                 </div>
             </div>
         </div>

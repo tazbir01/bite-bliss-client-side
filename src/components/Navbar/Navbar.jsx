@@ -1,5 +1,9 @@
+import { useContext } from 'react';
 import { NavLink, Link } from 'react-router-dom'
+import { authContext } from '../Provider/AuthProvider';
 const Navbar = () => {
+    const { logoutUser, user } = useContext(authContext)
+
 
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
@@ -7,6 +11,12 @@ const Navbar = () => {
         <li><NavLink to="/mycart">My Cart</NavLink></li>
         <li><NavLink to="/register">Register</NavLink></li>
     </>
+
+    const handleLogout = e => {
+        e.preventDefault()
+        logoutUser()
+    }
+
     return (
         <div className="fixed top-0 w-full bg-base-100 shadow-lg z-10">
             <div className="navbar  max-w-6xl mx-auto">
@@ -27,7 +37,14 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to="/login" className="btn">Login</Link>
+                    {
+                        user ? <div className='flex items-center gap-2 bg-slate-300 rounded-full px-3 py-1'>
+                            <img className='w-10 h-10 rounded-full' src={user.photoURL} alt="" />
+                            <p className='text-xl font-bold'>{user.displayName}</p>
+                            <Link onClick={handleLogout} className="border-l-2 pl-2">Logout</Link>
+                        </div>
+                            : <Link to="/login" className="btn">Login</Link>
+                    }
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { authContext } from "../Provider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 
 
@@ -10,7 +11,7 @@ const Register = () => {
     const handleRegisterForm = e =>{
         e.preventDefault()
         const name = e.target.name.value
-        const photo = e.target.name.value
+        const photo = e.target.photo.value
         const email = e.target.email.value
         const password = e.target.password.value
         console.log(name , email, password, photo)
@@ -28,9 +29,15 @@ const Register = () => {
         creatUser(email, password)
         .then(result => {
             console.log(result.user)
+
+            updateProfile(result.user, {
+                displayName: name,
+                photoURL: photo
+            })
         })
         .catch(error =>{
             console.log(error.message)
+            setPasswordErrorMessage(error.message)
         })
     }
 

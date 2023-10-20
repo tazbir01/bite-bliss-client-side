@@ -10,6 +10,7 @@ const Navbar = () => {
         <li><NavLink to="/addproduct">Add Product</NavLink></li>
         <li><NavLink to="/mycart">My Cart</NavLink></li>
         <li><NavLink to="/register">Register</NavLink></li>
+        <li><NavLink to="/productpage">Product page</NavLink></li>
     </>
 
     const handleLogout = e => {

@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { authContext } from "../Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import {Link, useNavigate} from 'react-router-dom';
+import swal from "sweetalert";
 
 
 
@@ -36,6 +37,7 @@ const Register = () => {
                 displayName: name,
                 photoURL: photo
             })
+            swal("Successfully register", "Login now!", "success");
         })
         .catch(error =>{
             console.log(error.message)
@@ -57,12 +59,12 @@ const Register = () => {
     }
 
     return (
-        <div className="hero min-h-screen bg-base-200">
-            <div className="hero-content flex-col">
+        <div className="  bg-base-200">
+            <div className=" flex-col">
                 <div className="text-center lg:text-left">
                     <h1 className="text-3xl font-bold">Register now!</h1>
                 </div>
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div className=" w-full  shadow-2xl bg-base-100">
                     <form onSubmit={handleRegisterForm} className="card-body">
                         <div className="form-control">
                             <label className="label">

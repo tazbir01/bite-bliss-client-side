@@ -10,6 +10,8 @@ import Home from './components/Home/Home';
 import Register from './components/Register/Register';
 import AuthProvider from './components/Provider/AuthProvider';
 import Login from './components/Login/Login';
+import AddProduct from './components/AddProduct/AddProduct';
+import ProductPage from './components/ProductPage/ProductPage';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +20,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>
+        element: <Home></Home>,
+        loader:()=> fetch('http://localhost:5000/brands')
       },
       {
         path: "/register",
@@ -27,6 +30,15 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element:<Login></Login>
+      },
+      {
+        path:"/addproduct",
+        element: <AddProduct></AddProduct>
+      },
+      {
+        path:"/productpage/",
+        element: <ProductPage></ProductPage>,
+        loader: ()=> fetch('http://localhost:5000/products')
       }
     ]
   },

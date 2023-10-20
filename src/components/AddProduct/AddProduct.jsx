@@ -31,8 +31,8 @@ const AddProduct = () => {
 
     }
     return (
-        <div className="w-1/2 mx-auto mt-16">
-            <h2 className="text-2xl font-bold">Add new product</h2>
+        <div className="md:w-1/2 mx-auto my-24 p-2">
+            <h2 className="text-2xl font-bold ">Add new product</h2>
             <form onSubmit={handleAddProduct}>
                 <div className="">
                     <div className="form-control w-full ">

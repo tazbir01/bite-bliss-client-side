@@ -1,9 +1,11 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom'
 import { authContext } from '../Provider/AuthProvider';
+import DarkModeToggle from "react-dark-mode-toggle";
+
 const Navbar = () => {
     const { logoutUser, user } = useContext(authContext)
-
+    const [isDarkMode, setIsDarkMode] = useState(() => false);
 
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
@@ -28,23 +30,31 @@ const Navbar = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             {links}
+                            <Link onClick={handleLogout} className="border-l-2 pl-2">Logout</Link>
                         </ul>
                     </div>
                     <a className="btn btn-ghost bg-orange-100 text-red-700 font-bold normal-case text-xl">BiteBliss</a>
+                    <div className="navbar-center hidden ml-10 lg:flex">
+                        <ul className="menu menu-horizontal px-1">
+                            {links}
+                        </ul>
+                    </div>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
-                        {links}
-                    </ul>
-                </div>
+
                 <div className="navbar-end">
+                    <DarkModeToggle
+                        className='md:mr-5'
+                        onChange={setIsDarkMode}
+                        checked={isDarkMode}
+                        size={80}
+                    />
                     {
-                        user ? <div className='flex items-center gap-2 bg-slate-300 rounded-full px-3 py-1'>
+                        user ? <div className='flex items-center gap-2 rounded-full px-3 py-1'>
                             <img className='w-10 h-10 rounded-full' src={user.photoURL} alt="" />
-                            <p className='text-xl font-bold'>{user.displayName}</p>
-                            <Link onClick={handleLogout} className="border-l-2 pl-2">Logout</Link>
+                            <p className='text-xl font-bold hidden md:block'>{user.displayName}</p>
+                            <Link onClick={handleLogout} className="border-l-2 pl-2 hidden md:block">Logout</Link>
                         </div>
-                            : <Link to="/login" className="btn">Login</Link>
+                            : <Link to="/login">Login</Link>
                     }
                 </div>
             </div>

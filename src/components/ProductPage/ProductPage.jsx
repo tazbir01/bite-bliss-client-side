@@ -2,10 +2,12 @@ import { useLoaderData, useParams } from "react-router-dom";
 
 const ProductPage = () => {
     const products = useLoaderData()
-    const {brand_name} = useParams()
-    console.log(brand_name)
+    console.log(products)
+    const {brand_name, _id} = useParams()
+    console.log(brand_name, _id)
 
     const product = products.filter(product => product.brand == brand_name)
+ 
     return (
         <div className="mt-20">
             <h2>{product.length}</h2>

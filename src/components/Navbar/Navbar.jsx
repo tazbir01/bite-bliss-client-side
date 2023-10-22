@@ -1,18 +1,16 @@
-import { useContext, useState } from 'react';
+import { useContext} from 'react';
 import { NavLink, Link } from 'react-router-dom'
 import { authContext } from '../Provider/AuthProvider';
-import DarkModeToggle from "react-dark-mode-toggle";
 
 const Navbar = () => {
     const { logoutUser, user } = useContext(authContext)
-    const [isDarkMode, setIsDarkMode] = useState(() => false);
 
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/addproduct">Add Product</NavLink></li>
         <li><NavLink to="/mycart">My Cart</NavLink></li>
         <li><NavLink to="/register">Register</NavLink></li>
-        <li><NavLink to="/productpage">Product page</NavLink></li>
+        <li><NavLink to="/products">Products</NavLink></li>
     </>
 
     const handleLogout = e => {
@@ -42,12 +40,6 @@ const Navbar = () => {
                 </div>
 
                 <div className="navbar-end">
-                    <DarkModeToggle
-                        className='md:mr-5'
-                        onChange={setIsDarkMode}
-                        checked={isDarkMode}
-                        size={80}
-                    />
                     {
                         user ? <div className='flex items-center gap-2 rounded-full px-3 py-1'>
                             <img className='w-10 h-10 rounded-full' src={user.photoURL} alt="" />

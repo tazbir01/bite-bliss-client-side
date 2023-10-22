@@ -90,7 +90,7 @@ const AddProduct = () => {
                     <textarea name="description" className="textarea textarea-bordered" placeholder="Enter short description"></textarea>
                 </div>
                 {/* button */}
-                <input type="submit" value="Add Product" className="btn btn-block mt-4" />
+                <input type="submit" value="Add Product" className="btn btn-primary w-full mt-4" />
             </form>
         </div>
     );

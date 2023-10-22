@@ -9,10 +9,8 @@ import AboutSection from "../AboutSection/AboutSection";
 const Home = () => {
     const brands = useLoaderData()
     
-
     return (
-        <div className="">
-            
+        <div>
             {/* header */}
             <Header></Header>
             {/* test section */}

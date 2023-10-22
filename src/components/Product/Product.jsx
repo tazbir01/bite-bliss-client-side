@@ -1,18 +1,16 @@
 
 const Product = ({product}) => {
-    const { name, brand, price, type, image, rating, description } = product;
+    const { name, brand, price, type, image, rating} = product;
     return (
         <div className="card bg-base-100 shadow-xl">
-                <figure><img className="h-40 w-full" src={image} alt="" /></figure>
-                <div className="card-body">
+                <figure><img className="h-40 md:w-full" src={image} alt="" /></figure>
+                <div className="p-5">
                     <h2 className="card-title">{name}</h2>
-                    <p>{brand}</p>
-                    <p>{type}</p>
-                    <p>{price}</p>
-                    <p>{rating}</p>
-
-                    
-                    <div className="card-actions justify-end">
+                    <p>Type: {type}</p>
+                    <p>Brand: {brand}</p>
+                    <p>Price: {price}TK</p>
+                    <p>Rating: {rating}</p>
+                    <div className="mt-3 card-actions justify-end">
                         <div className="badge badge-outline">Details</div>
                         <div className="badge badge-outline">Update</div>
                     </div>

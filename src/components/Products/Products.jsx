@@ -1,6 +1,7 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Product from "../Product/Product";
+import Footer from "../Footer/Footer";
 
 const Products = () => {
     const allProducts = useLoaderData()
@@ -13,15 +14,47 @@ const Products = () => {
     }, [allProducts, brand])
 
     return (
-        <div className="mt-20">
-            <h2>Products: {allProducts.length}</h2>
-            <h2>{brand}: {brandProducts.length}</h2>
-            <div className="max-w-5xl mx-auto grid md:grid-cols-4 gap-5">
+        <div className="mt-16">
+            {/* slider section */}
+            <div className="carousel w-full">
+                <div id="slide1" className="carousel-item relative w-full">
+                    <img src="https://i.ibb.co/H4WNS8m/id-OKp-Yns-Fd.jpg" className="w-full" />
+                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide3" className="btn btn-circle">❮</a>
+                        <a href="#slide2" className="btn btn-circle">❯</a>
+                    </div>
+                </div>
+                <div id="slide2" className="carousel-item relative w-full">
+                    <img src="https://i.ibb.co/CMtkYK8/Coke-Vending-About-Us-Banner-Scale-Max-Width-Wz-E0-NDBd.png" className="w-full" />
+                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide1" className="btn btn-circle">❮</a>
+                        <a href="#slide3" className="btn btn-circle">❯</a>
+                    </div>
+                </div>
+                <div id="slide3" className="carousel-item relative w-full">
+                    <img src="https://i.ibb.co/gywjzZ1/herobanner.jpg" className="w-full" />
+                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide2" className="btn btn-circle">❮</a>
+                        <a href="#slide1" className="btn btn-circle">❯</a>
+                    </div>
+                </div>
+                <div id="slide4" className="carousel-item relative w-full">
+                    <img src="/images/stock/photo-1665553365602-b2fb8e5d1707.jpg" className="w-full" />
+                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide3" className="btn btn-circle">❮</a>
+                        <a href="#slide1" className="btn btn-circle">❯</a>
+                    </div>
+                </div>
+            </div>
+            {/* product card */}
+            {/* <h2>Products: {allProducts.length}</h2>
+            <h2>{brand}: {brandProducts.length}</h2> */}
+            <div className="max-w-5xl mx-auto grid md:grid-cols-4 gap-5 my-20">
                 {
                     brandProducts.map(product => <Product key={product._id} product={product}></Product>)
                 }
             </div>
-            
+            <Footer></Footer>
         </div>
     );
 };

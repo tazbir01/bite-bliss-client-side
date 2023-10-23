@@ -1,8 +1,15 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# BiteBliss
 
-Currently, two official plugins are available:
+## Project Live Link
+<!-- Click Here: [https://mind-body-events.web.app/](https://mind-body-events.web.app/) -->
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Speacial Features and Functionalities have in this Projects
+
+* This projects have dark mood. You can toggle with icon light to dark mood.
+* In the home page have card section there is brand name and image. If you click specific card it will take you its dynamic page there is also this brand product.
+* Each product have details button that will take you to the details page and this page is private. You can not see without log in.
+* Each product you can add to my cart.
+* This project have email, password authintication and gmail authintication.
+* It is a single page application.
+

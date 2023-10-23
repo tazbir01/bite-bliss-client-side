@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 const Update = () => {
     const product = useLoaderData()
     console.log(product)
-    const { name, brand, price, type, category, image, rating, description } = product;
+    // const { name, brand, price, type, category, image, rating, description } = product;
     const handleUpdateProduct = e =>{
         e.preventDefault()
 

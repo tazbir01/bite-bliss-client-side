@@ -14,7 +14,7 @@ const Product = ({ product }) => {
                 <p>Rating: {rating}</p>
                 <div className="mt-3 card-actions justify-end">
                     <div className="badge badge-outline"><Link to={`/details/${_id}`}>Details</Link></div>
-                    <div className="badge badge-outline">Update</div>
+                    <div className="badge badge-outline"><Link to={`/update/${_id}`}>Update</Link></div>
                 </div>
             </div>
         </div>

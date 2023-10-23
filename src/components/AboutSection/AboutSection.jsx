@@ -2,7 +2,7 @@
 const AboutSection = () => {
     return (
         <div className="bg-base-200 p-5">
-            <div className="mt-10 max-w-5xl mx-auto">
+            <div className="my-10 max-w-5xl mx-auto">
                 <div className="mt-4">
                     <h2 className="text-center text-4xl font-bold">About BiteBliss</h2>
                 </div>

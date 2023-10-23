@@ -13,6 +13,10 @@ const Products = () => {
         setBrandProducts(products)
     }, [allProducts, brand])
 
+    if(!brandProducts){
+        return setBrandProducts('No product available.')
+    }
+    
     return (
         <div className="mt-16">
             {/* slider section */}
@@ -51,7 +55,11 @@ const Products = () => {
             <h2>{brand}: {brandProducts.length}</h2> */}
             <div className="max-w-5xl mx-auto grid md:grid-cols-4 gap-5 my-20">
                 {
-                    brandProducts.map(product => <Product key={product._id} product={product}></Product>)
+                    brandProducts.length === 0 
+                    ? <div className="flex justify-center items-center col-span-4">
+                        <h4 className="text-2xl"><span className="text-black font-semibold">{brand}</span> No product available.</h4>
+                        </div>
+                    : brandProducts.map(product => <Product key={product._id} product={product}></Product>)
                 }
             </div>
             <Footer></Footer>

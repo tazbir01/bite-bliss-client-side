@@ -20,7 +20,7 @@ const AddProduct = () => {
             return setRatingValidation('Please enter a number out of 5.')
         }
 
-        fetch('http://localhost:5000/products',{
+        fetch('https://bite-bliss-server-3j7qx5ejq-tazbirs-projects.vercel.app/products',{
             method:'POST',
             headers:{
                 'content-type': 'application/json'

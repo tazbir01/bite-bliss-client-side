@@ -16,7 +16,7 @@ const ProductDetails = () => {
     const handleCartButton = (product) =>{
         console.log(product)
         // e.preventDefault()
-        fetch('http://localhost:5000/cart',{
+        fetch('https://bite-bliss-server-3j7qx5ejq-tazbirs-projects.vercel.app/cart',{
             method:'POST',
             headers:{
                 'content-type' : 'application/json'

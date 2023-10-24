@@ -24,7 +24,7 @@ const Update = () => {
             return setRatingValidation('Please enter a number out of 5.')
         }
 
-        fetch(`http://localhost:5000/products/${_id}`, {
+        fetch(`https://bite-bliss-server-3j7qx5ejq-tazbirs-projects.vercel.app/products/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

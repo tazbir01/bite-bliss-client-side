@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader:()=> fetch('http://localhost:5000/brands')
+        loader:()=> fetch('https://bite-bliss-server-3j7qx5ejq-tazbirs-projects.vercel.app/brands')
       },
       {
         path: "/register",
@@ -44,22 +44,22 @@ const router = createBrowserRouter([
       {
         path:"/products/:brand",
         element: <Products></Products>,
-        loader:()=> fetch('http://localhost:5000/products')
+        loader:()=> fetch('https://bite-bliss-server-3j7qx5ejq-tazbirs-projects.vercel.app/products')
       },
       {
         path:"/details/:id",
         element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
-        loader: ()=> fetch("http://localhost:5000/products")
+        loader: ()=> fetch("https://bite-bliss-server-3j7qx5ejq-tazbirs-projects.vercel.app/products")
       },
       {
         path:"/mycart",
         element: <PrivateRoute><MyCart></MyCart></PrivateRoute>,
-        loader: ()=> fetch("http://localhost:5000/cart")
+        loader: ()=> fetch("https://bite-bliss-server-3j7qx5ejq-tazbirs-projects.vercel.app/cart")
       },
       {
         path:"/update/:id",
         element: <PrivateRoute><Update></Update></PrivateRoute>,
-        loader: ({params})=> fetch(`http://localhost:5000/products/${params.id}`)
+        loader: ({params})=> fetch(`https://bite-bliss-server-3j7qx5ejq-tazbirs-projects.vercel.app/products/${params.id}`)
       }
     ]
   },

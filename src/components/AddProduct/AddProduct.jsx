@@ -1,6 +1,9 @@
+import { useState } from "react";
 import swal from "sweetalert";
 
 const AddProduct = () => {
+    const [ratingValidation, setRatingValidation] = useState('')
+
     const handleAddProduct = e => {
         e.preventDefault()
         const name = e.target.name.value
@@ -12,6 +15,10 @@ const AddProduct = () => {
         const description = e.target.description.value
         const newProduct = { name, brand, price, type, image, rating, description }
         console.log(newProduct)
+
+        if( isNaN(rating) || rating > 5){
+            return setRatingValidation('Please enter a number out of 5.')
+        }
 
         fetch('http://localhost:5000/products',{
             method:'POST',
@@ -72,6 +79,9 @@ const AddProduct = () => {
                         <span className="label-text">Product rating</span>
                     </label>
                     <input type="text" name="rating" placeholder="Enter product rating out of 5" className="input input-bordered w-full " />
+                    {
+                        ratingValidation && <p>{ratingValidation}</p>
+                    }
                 </div>
                 <div className="form-control w-full">
                     <label className="label">

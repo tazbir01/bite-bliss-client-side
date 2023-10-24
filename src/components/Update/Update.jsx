@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { useLoaderData} from "react-router-dom";
 import swal from "sweetalert";
 
 const Update = () => {
     const product = useLoaderData()
-    console.log(product)
+    const [ratingValidation, setRatingValidation] = useState('')
   
     const { name, brand, price, type, image, rating, description, _id } = product;
     
@@ -18,6 +19,10 @@ const Update = () => {
         const description = e.target.description.value
         const updateProduct = { name, brand, price, type, image, rating, description }
         console.log(updateProduct)
+
+        if( isNaN(rating) || rating > 5){
+            return setRatingValidation('Please enter a number out of 5.')
+        }
 
         fetch(`http://localhost:5000/products/${_id}`, {
             method: 'PUT',
@@ -78,7 +83,10 @@ const Update = () => {
                     <label className="label">
                         <span className="label-text">Product rating</span>
                     </label>
-                    <input type="text" name="rating" defaultValue={rating} placeholder="Enter product rating (1-5)/5" className="input input-bordered w-full " />
+                    <input type="text" name="rating" defaultValue={rating} placeholder="Enter product rating out of 5" className="input input-bordered w-full " />
+                    {
+                        ratingValidation && <p>*{ratingValidation}</p>
+                    }
                 </div>
                 <div className="form-control w-full">
                     <label className="label">

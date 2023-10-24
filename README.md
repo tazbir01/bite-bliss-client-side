@@ -2,7 +2,7 @@
 # BiteBliss
 
 ## Project Live Link
-<!-- Click Here: [https://mind-body-events.web.app/](https://mind-body-events.web.app/) -->
+
 
 ## Speacial Features and Functionalities have in this Projects
 

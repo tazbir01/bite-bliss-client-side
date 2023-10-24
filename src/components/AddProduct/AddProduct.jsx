@@ -7,11 +7,10 @@ const AddProduct = () => {
         const brand = e.target.brand.value
         const price = e.target.price.value
         const type = e.target.type.value
-        const category = e.target.category.value
         const image = e.target.image.value
         const rating = e.target.rating.value
         const description = e.target.description.value
-        const newProduct = { name, brand, price, type, category, image, rating, description }
+        const newProduct = { name, brand, price, type, image, rating, description }
         console.log(newProduct)
 
         fetch('http://localhost:5000/products',{
@@ -62,14 +61,6 @@ const AddProduct = () => {
                         <input type="text" name="type" placeholder="Enter type of product" className="input input-bordered w-full" />
                     </div>
                 </div>
-                <div className="">
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text">Category</span>
-                        </label>
-                        <input type="text" name="category" placeholder="Enter product category" className="input input-bordered w-full" />
-                    </div>
-                </div>
                 <div className="form-control w-full ">
                     <label className="label">
                         <span className="label-text">Product image</span>
@@ -86,7 +77,6 @@ const AddProduct = () => {
                     <label className="label">
                         <span className="label-text">Short description</span>
                     </label>
-                    {/* <input type="text" name="description" placeholder="" className="input input-bordered w-full" /> */}
                     <textarea name="description" className="textarea textarea-bordered" placeholder="Enter short description"></textarea>
                 </div>
                 {/* button */}
